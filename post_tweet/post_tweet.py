@@ -1,9 +1,14 @@
 import json
 
 
-def post_tweet(n_fetched_tweets, latest_tweet_posted_time, oldest_tweet_posted_time, twitter):
+def post_tweet(twitter, tweets_features):
     url_media = 'https://upload.twitter.com/1.1/media/upload.json'
     url_post = 'https://api.twitter.com/1.1/statuses/update.json'
+
+    # 収集したツイートの情報
+    n_tweets = tweets_features['n_tweets']
+    latest_tweet_posted_time = tweets_features['latest_tweet_posted_time']
+    oldest_tweet_posted_time = tweets_features['oldest_tweet_posted_time']
 
     # 画像をアップロード
     files = {'media': open('tmp/wc.png', 'rb')}
@@ -19,7 +24,7 @@ def post_tweet(n_fetched_tweets, latest_tweet_posted_time, oldest_tweet_posted_t
 
     # アップロードした画像を添付したツイートを投稿
     message = 'test\n' \
-              + '収集ツイート数:{}\n'.format(n_fetched_tweets) \
+              + '収集ツイート数:{}\n'.format(n_tweets) \
               + 'ツイート収集範囲：\n{}~{}\n'.format(oldest_tweet_posted_time, latest_tweet_posted_time) \
               + '#lovelive #LLNow'
     params = {'status': message, 'media_ids': [media_id]}
