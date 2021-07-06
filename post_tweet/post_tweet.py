@@ -33,7 +33,7 @@ def post_tweet(twitter):
 
     # レスポンスを確認
     if res_post.status_code == 200:
-        print("Success.")
+        print("Successfully posted.")
     else:
         print("Failed.")
         print(" - Response Status Code : {}".format(res_post.status_code))
