@@ -11,7 +11,7 @@ def post_tweet(twitter):
     # oldest_tweet_posted_time = tweets_features['oldest_tweet_posted_time']
 
     # 画像をアップロード
-    files = {'media': open('/tmp/wc.png', 'rb')}
+    files = {'media': open('/tmp/post_image.png', 'rb')}
     res_media = twitter.post(url_media, files=files)
 
     # レスポンスを確認
