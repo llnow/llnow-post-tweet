@@ -18,7 +18,7 @@ def post_tweet(twitter):
     media_id = json.loads(res_media.text)['media_id']
 
     # アップロードした画像を添付したツイートを投稿
-    message = 'test\n' + '#lovelive #LLNow'
+    message = '#lovelive #LLNow'
     params = {'status': message, 'media_ids': [media_id]}
     res_post = twitter.post(url_post, params=params)
 
