@@ -1,4 +1,5 @@
 import json
+from generate_message import *
 
 
 def post_tweet(twitter):
@@ -17,8 +18,10 @@ def post_tweet(twitter):
     # media_id を取得
     media_id = json.loads(res_media.text)['media_id']
 
+    # 投稿文を生成
+    message = generate_message()
+
     # アップロードした画像を添付したツイートを投稿
-    message = '現在の #lovelive の様子です。\n#LLNow'
     params = {'status': message, 'media_ids': [media_id]}
     res_post = twitter.post(url_post, params=params)
 
