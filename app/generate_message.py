@@ -1,9 +1,10 @@
 import boto3
 from boto3.dynamodb.conditions import Key
 from check_datetime_in_range import *
+from generate_bd_hashtag import *
 
 
-def generate_message():
+def generate_message(mode):
     table = boto3.resource('dynamodb').Table('ll-now-search-keyword')
 
     # 検索キーワードを取得
@@ -28,6 +29,10 @@ def generate_message():
 
     keywords = default_keywords + option_keywords
     kw_str = ' '.join(keywords)
-    message = '現在の {} の様子です。\n\n#LLNow'.format(kw_str)
+
+    # 生誕祭ハッシュタグを取得
+    bd_hashtag = generate_bd_hashtag(mode)
+
+    message = '現在の {} の様子です。\n\n{} #LLNow'.format(kw_str, bd_hashtag)
 
     return message
