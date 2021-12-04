@@ -11,8 +11,8 @@ def generate_bd_hashtag(mode):
     res = table.scan(
         FilterExpression=Attr('birthmonth').eq(month) & Attr('birthday').eq(day)
     )
-    if res['Item']:
-        birthday_character = res['Item']['full_name']
+    if res['Items']:
+        birthday_character = res['Items'][0]['full_name']
         bd_hashtag = '#{}生誕祭{}'.format(birthday_character, year)
     else:
         bd_hashtag = ''
