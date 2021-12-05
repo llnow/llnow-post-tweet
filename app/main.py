@@ -10,4 +10,4 @@ def main(event, context):
 
     set_post_image(bucket, key)
     twitter = set_twitter(mode)
-    post_tweet(twitter)
+    post_tweet(twitter, mode)

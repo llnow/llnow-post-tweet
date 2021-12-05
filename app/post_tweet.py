@@ -2,7 +2,7 @@ import json
 from generate_message import *
 
 
-def post_tweet(twitter):
+def post_tweet(twitter, mode):
     url_media = 'https://upload.twitter.com/1.1/media/upload.json'
     url_post = 'https://api.twitter.com/1.1/statuses/update.json'
 
@@ -19,7 +19,7 @@ def post_tweet(twitter):
     media_id = json.loads(res_media.text)['media_id']
 
     # 投稿文を生成
-    message = generate_message()
+    message = generate_message(mode)
 
     # アップロードした画像を添付したツイートを投稿
     params = {'status': message, 'media_ids': [media_id]}
